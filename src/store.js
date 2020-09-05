@@ -1,6 +1,6 @@
-import { createStore }  from 'redux';
-import reducer from './reducer';
+import { createStore, applyMiddleware }  from 'redux';
+import {addTodo} from './reducer/addTodo.reducer';
+import logger from "redux-logger";
 
-const store = createStore(reducer);
+export const store = createStore(addTodo,applyMiddleware(logger));
 
-export default store;

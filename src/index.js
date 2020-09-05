@@ -1,9 +1,18 @@
-import store from "./store";
-import { itemAdded} from "./actions";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import {App} from './App';
+import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import {store} from './store';
 
-//state = reducer(state,action);
 
-store.dispatch(itemAdded("Walk One Mile"));
-
-console.log(store.getState());
-
+ReactDOM.render(
+  <Provider store={store}>
+    <React.StrictMode>
+    <App />
+    </React.StrictMode>
+  </Provider>,
+  document.getElementById('root')
+);
+serviceWorker.unregister();
