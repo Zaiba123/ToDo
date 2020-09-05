@@ -1,5 +1,6 @@
 import React from "react";
-import InputField from './components.js/InputField';
+import InputField from './components/InputField';
+import List from './components/List';
 
 
 export const App =()=>{
@@ -7,6 +8,7 @@ export const App =()=>{
         <div>
             <h1>What are you going ToDo today?</h1>
             <InputField />
+            <List  />
         </div>
     );
 }

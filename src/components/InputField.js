@@ -14,15 +14,15 @@ import { connect } from "react-redux";
     }
     render() {
         return (
-            <div>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Enter your todo.." name="todo" onChange={this.handleChange}/>
                 </form>
-            </div>
         )
     }
 }
 const mapDispatchToProps = dispatch => ({
     addTodo : todo => dispatch(addTodo(todo))
 })
-export default connect(null,mapDispatchToProps)(InputField);
+export default connect(
+    null,
+    mapDispatchToProps)(InputField);

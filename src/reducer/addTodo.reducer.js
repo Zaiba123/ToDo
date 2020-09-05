@@ -4,7 +4,10 @@ const initState = {
 }
 
 export const addTodo = (state = initState,action) => {
-    if(action.type === action.ADD_TODO)
+    switch (action.type){ //made a switch statement for different cases, useful when changing between adding and deleting 
+        case "ADD_TODO":
     return { ...state, todos:state.todos.concat(action.payload)};
+    default:
     return state;
+};
 }
