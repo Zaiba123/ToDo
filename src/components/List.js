@@ -7,7 +7,7 @@ const List =({todos}) => {
         <div style={{display: 'flex',flexDirection:"column"}}>
             <ul>
             {todos.map((todo,t) => (
-            <li key={todos}><Todo todo={todo} /></li>
+            <li><Todo key={t} todo={todo} idx={t} /></li>
                 ))}
             </ul>
         </div>
