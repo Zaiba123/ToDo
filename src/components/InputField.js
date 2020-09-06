@@ -1,12 +1,19 @@
 import React from 'react';
-import {addTodo, addDescription} from "../action/addTodo.action"
+import {addTodo, addDescription, editItem} from "../action/addTodo.action"
 import { connect } from "react-redux";
 
  class InputField extends React.Component {
     handleChange = (e) => this.props.addDescription(e.target.value);
     handleSubmit = e => {
         e.preventDefault();
-        this.props.addTodo(this.props.description);
+        if(this.props.currentItem || this.props.currentItem===0)
+        {
+            this.props.editItem({value:this.props.text,currentItem:this.props.currentItem})
+        }
+        else
+        {
+            this.props.addTodo(this.props.description);
+        }
     };
     render() {
         return (
@@ -18,10 +25,12 @@ import { connect } from "react-redux";
 }
 const mapDispatchToProps = (dispatch) => ({
     addTodo : todo => dispatch(addTodo(todo)),
-    addDescription: value => dispatch(addDescription(value))
+    addDescription: value => dispatch(addDescription(value)),
+    editItem: Object => dispatch(editItem(Object))
 });
 const mapStateToProps = state => ({
-    description: state.description
+    description: state.description,
+    currentItem:state.currentItem
 });
 export default connect(
     mapStateToProps, //mapStateToProps should come before Dispatch

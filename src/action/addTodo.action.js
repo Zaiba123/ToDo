@@ -14,6 +14,11 @@ export const editTodo = key => ({
 });
 
 export const addDescription = value => ({
-    type:"ADD_ DESCRIPTION",
+    type:"ADD_DESCRIPTION",
     payload:value
+});
+
+export const editItem = Object => ({
+    type:"EDIT_ITEM",
+    payload:Object
 });
