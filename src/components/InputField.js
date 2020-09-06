@@ -10,7 +10,7 @@ import { connect } from "react-redux";
         e.preventDefault();
         if(this.props.currentItem || this.props.currentItem===0)
         {
-            this.props.editItem({value:this.props.text,currentItem:this.props.currentItem})
+            this.props.editItem({value:this.props.description,currentItem:this.props.currentItem})
         }
         else
         {
@@ -20,8 +20,9 @@ import { connect } from "react-redux";
     render() {
         return (
                 <form onSubmit={this.handleSubmit}>
+                    {/* <TextField id="outlined-basic" label="Standard" onChange={this.handleChange}> {this.props.description}</TextField> */}
                     <input type="text" placeholder="Enter a task.." value={this.props.description} name="todo" onChange={this.handleChange}/>
-                    <Button type="submit" value={this.props.description} name="todo" onChange={this.handleChange}> Submit </Button>
+                    <Button type="submit" variant="outlined" value={this.props.description} name="todo" onChange={this.handleChange}> Submit </Button>
                 </form>
         )
     }

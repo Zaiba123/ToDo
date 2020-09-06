@@ -15,10 +15,11 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description }) =>  {
                 {currentItem === idx ? description : todo}
                </div>
             <div>
-                { currentItem === idx ? <Button color="primary" variant="outlined" onClick ={() => editTodo(idx)}> OK <DoneIcon/></Button> :
+                { currentItem === idx ? <Button color="primary" variant="outlined" onClick ={() => editTodo(idx)} type="submit"> OK <DoneIcon/></Button> :
                 <>
-                <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} aria-label="delete" style={{ cursor:'pointer'}}onClick={() => deleteTodo(idx)}>Delete</Button>
-                <Button variant="outlined" color="primary" onClick ={() => editTodo(idx)}><EditIcon/> Edit</Button>
+                <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} aria-label="delete" style={{ cursor:'pointer'}} type="submit" onClick={() => deleteTodo(idx)}>Delete</Button>
+                <Button variant="outlined" color="primary" type="submit" onClick ={() => editTodo(idx)}><EditIcon/> Edit</Button>
+
                 </>
                 }
             </div>
