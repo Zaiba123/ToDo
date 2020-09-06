@@ -1,12 +1,13 @@
 import React from 'react';
+import Todo from './Todo';
 import { connect } from 'react-redux';
 
 const List =({todos}) => {
     return (
-        <div>
+        <div style={{display: 'flex',flexDirection:"column"}}>
             <ul>
             {todos.map((todo,t) => (
-            <li key={todos.id}>{todo}</li>
+            <li key={todos}><Todo todo={todo} /></li>
                 ))}
             </ul>
         </div>
