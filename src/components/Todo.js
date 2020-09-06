@@ -1,18 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { deleteTodo, editTodo } from '../action/addTodo.action';
+import { Button } from '@material-ui/core';
 
-const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description }) =>  {
+
+const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description,addTodo }) =>  {
    return(
        <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
-            <div onClick ={() => editTodo(idx)}>
+            <div >
                 {currentItem === idx ? description : todo}
                </div>
             <div>
-                { currentItem === idx ? <button onClick ={() => editTodo(idx)}>OK</button> :
+                { currentItem === idx ?  <Button onClick ={() => editTodo(idx)}>OK</Button> :
                 <>
-                <button style={{ cursor:'pointer'}}onClick={() => deleteTodo(idx)}>Delete</button>
-                <button onClick ={() => editTodo(idx)}>Edit</button>
+                <Button style={{ cursor:'pointer'}}onClick={() => deleteTodo(idx)}>Remove</Button>
+                <Button onClick ={() => editTodo(idx)}>Rename</Button>
                 </>
                 }
             </div>

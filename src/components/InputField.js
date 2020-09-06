@@ -1,6 +1,8 @@
 import React from 'react';
 import {addTodo, addDescription, editItem} from "../action/addTodo.action"
 import { connect } from "react-redux";
+import { Input } from '@material-ui/core';
+
 
  class InputField extends React.Component {
     handleChange = (e) => this.props.addDescription(e.target.value);
@@ -18,7 +20,7 @@ import { connect } from "react-redux";
     render() {
         return (
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Enter a task.." value={this.props.description} name="todo" onChange={this.handleChange}/>
+                    <Input type="text" placeholder="Enter a task.." value={this.props.description} name="todo" onChange={this.handleChange}/>
                 </form>
         )
     }
