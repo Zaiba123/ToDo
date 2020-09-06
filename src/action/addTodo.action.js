@@ -17,6 +17,11 @@ export const addDescription = value => ({
     type:"ADD_DESCRIPTION",
     payload:value
 });
+//TESTING
+export const editInLine = value => ({ //wanted to be able to change text in line 
+    type:"EDIT_INLINE",
+    payload:value
+});
 
 export const editItem = obj => ({ //This allows you to edit the form to rename
     type:"EDIT_ITEM",

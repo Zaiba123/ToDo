@@ -16,7 +16,9 @@ export const addTodo = (state = initialState,action) => {
             return {...state,description:action.payload};
         case "EDIT_ITEM":
                 return {...state,todos:state.todos.map((todo,t) => t !== action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,description:""}; //description is empty to clear out the text in box 
-                //
+        case "EDIT_INLINE":
+            return {...state,currentItem:action.payload.value}; //description is empty to clear out the text in box 
+
     default:
     return state;
 };

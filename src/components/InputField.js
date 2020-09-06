@@ -3,6 +3,10 @@ import {addTodo, addDescription, editItem} from "../action/addTodo.action"
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 import { connect } from "react-redux";
+import AddIcon from '@material-ui/icons/Add';
+import { green, purple } from '@material-ui/core/colors';
+
+import "./style.css";
 
  class InputField extends React.Component {
     handleChange = (e) => this.props.addDescription(e.target.value);
@@ -22,7 +26,7 @@ import { connect } from "react-redux";
                 <form onSubmit={this.handleSubmit}>
                     {/* <TextField id="outlined-basic" label="Standard" onChange={this.handleChange}> {this.props.description}</TextField> */}
                     <input type="text" placeholder="Enter a task.." value={this.props.description} name="todo" onChange={this.handleChange}/>
-                    <Button type="submit" variant="outlined" value={this.props.description} name="todo" onChange={this.handleChange}> Submit </Button>
+                    <Button type="submit"  variant="outlined" value={this.props.description} name="todo" onChange={this.handleChange}> Add Item  <AddIcon/></Button>
                 </form>
         )
     }
