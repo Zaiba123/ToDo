@@ -18,7 +18,7 @@ export const addDescription = value => ({
     payload:value
 });
 
-export const editItem = Object => ({
+export const editItem = obj => ({
     type:"EDIT_ITEM",
-    payload:Object
+    payload:obj
 });

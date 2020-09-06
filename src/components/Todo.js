@@ -5,10 +5,13 @@ import { deleteTodo, editTodo } from '../action/addTodo.action';
 const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description }) =>  {
    return(
        <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
-            <div onClick ={() => editTodo(idx)}>
+            <div>
                 {currentItem === idx ? description : todo}
                </div>
-            <div style={{padding:"2px", border:"2px solid", cursor:'pointer'}}onClick={() => deleteTodo(idx)}>Delete</div>
+            <div>
+                <button style={{ cursor:'pointer'}}onClick={() => deleteTodo(idx)}>Delete</button>
+                <button onClick ={() => editTodo(idx)}>Edit</button>
+            </div>
        </div>
    );
 };

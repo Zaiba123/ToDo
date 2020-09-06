@@ -26,7 +26,7 @@ import { connect } from "react-redux";
 const mapDispatchToProps = (dispatch) => ({
     addTodo : todo => dispatch(addTodo(todo)),
     addDescription: value => dispatch(addDescription(value)),
-    editItem: Object => dispatch(editItem(Object))
+    editItem: obj => dispatch(editItem(obj))
 });
 const mapStateToProps = state => ({
     description: state.description,
