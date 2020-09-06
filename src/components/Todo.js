@@ -9,8 +9,12 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description }) =>  {
                 {currentItem === idx ? description : todo}
                </div>
             <div>
+                {editTodo(idx) ? <button onClick ={() => editTodo(idx)}>Edit</button> :
+                <>
                 <button style={{ cursor:'pointer'}}onClick={() => deleteTodo(idx)}>Delete</button>
                 <button onClick ={() => editTodo(idx)}>Edit</button>
+                </>
+   }
             </div>
        </div>
    );
