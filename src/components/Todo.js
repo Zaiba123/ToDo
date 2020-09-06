@@ -5,16 +5,16 @@ import { deleteTodo, editTodo } from '../action/addTodo.action';
 const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description }) =>  {
    return(
        <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
-            <div>
+            <div onClick ={() => editTodo(idx)}>
                 {currentItem === idx ? description : todo}
                </div>
             <div>
-                {editTodo(idx) ? <button onClick ={() => editTodo(idx)}>Edit</button> :
+                { currentItem === idx ? <button onClick ={() => editTodo(idx)}>Edit</button> :
                 <>
                 <button style={{ cursor:'pointer'}}onClick={() => deleteTodo(idx)}>Delete</button>
                 <button onClick ={() => editTodo(idx)}>Edit</button>
                 </>
-   }
+                }
             </div>
        </div>
    );

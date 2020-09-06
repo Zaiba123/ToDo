@@ -15,7 +15,7 @@ export const addTodo = (state = initialState,action) => {
         case "ADD_DESCRIPTION":
             return {...state,description:action.payload};
         case "EDIT_ITEM":
-                return {...state,todos:state.todos.map((todo,t) => t!==action.payload.currentItem ? todo : action.payload.value),selected:undefined,description:""}; 
+                return {...state,todos:state.todos.map((todo,t) => t!==action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,description:""}; 
     default:
     return state;
 };
