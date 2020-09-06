@@ -1,29 +1,28 @@
 import React from 'react';
-import {addTodo} from "../action/addTodo.action"
+import {addTodo, addDescription} from "../action/addTodo.action"
 import { connect } from "react-redux";
 
  class InputField extends React.Component {
-    state = {
-       todo: ""
-    };
-
-    handleChange = (e) => this.setState({todo: e.target.value});
+    handleChange = (e) => this.props.addDescription(e.target.value);
     handleSubmit = e => {
         e.preventDefault();
-        this.props.addTodo(this.state.todo);
-        this.setState({todo:""});
-    }
+        this.props.addTodo(this.props.description);
+    };
     render() {
         return (
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Enter your todo.." value={this.state.todo} name="todo" onChange={this.handleChange}/>
+                    <input type="text" placeholder="Enter a task.." value={this.props.description} name="todo" onChange={this.handleChange}/>
                 </form>
         )
     }
 }
-const mapDispatchToProps = dispatch => ({
-    addTodo : todo => dispatch(addTodo(todo))
-})
+const mapDispatchToProps = (dispatch) => ({
+    addTodo : todo => dispatch(addTodo(todo)),
+    addDescription: value => dispatch(addDescription(value))
+});
+const mapStateToProps = state => ({
+    description: state.description
+});
 export default connect(
-    null,
+    mapStateToProps, //mapStateToProps should come before Dispatch
     mapDispatchToProps)(InputField);
