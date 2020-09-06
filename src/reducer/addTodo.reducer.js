@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export const addTodo = (state = initialState,action) => {
-    switch (action.type){ 
+    switch (action.type){
         case "ADD_TODO":
             return { ...state, todos:state.todos.concat(action.payload),description:""};
         case "DELETE_TODO":
@@ -15,7 +15,8 @@ export const addTodo = (state = initialState,action) => {
         case "ADD_DESCRIPTION":
             return {...state,description:action.payload};
         case "EDIT_ITEM":
-                return {...state,todos:state.todos.map((todo,t) => t!==action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,description:""}; 
+                return {...state,todos:state.todos.map((todo,t) => t !== action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,description:""}; //description is empty to clear out the text in box 
+                //
     default:
     return state;
 };

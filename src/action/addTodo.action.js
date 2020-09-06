@@ -18,7 +18,7 @@ export const addDescription = value => ({
     payload:value
 });
 
-export const editItem = obj => ({
+export const editItem = obj => ({ //This allows you to edit the form to rename
     type:"EDIT_ITEM",
     payload:obj
 });
