@@ -20,6 +20,7 @@ import { connect } from "react-redux";
         return (
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Enter a task.." value={this.props.description} name="todo" onChange={this.handleChange}/>
+                    <button value={this.props.description} name="todo" onChange={this.handleChange}> Submit </button>
                 </form>
         )
     }
