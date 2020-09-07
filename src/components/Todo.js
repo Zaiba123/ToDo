@@ -8,7 +8,7 @@ import DoneIcon from '@material-ui/icons/Done';
 
 
 const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine,props }) =>  {
-     const handleChange = (e) => props.inputTitle(e.target.value);
+     const handleChange = (e) => editInLine(e.target.value);
    return(
        <div>
        <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
@@ -18,7 +18,7 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine
             <div>
                 { (currentItem === idx )? 
                 ( <form>
-                    <input type="text" placeholder="Enter a task.." value={editInLine} name="todo" onChange={handleChange}/>
+                    <input type="text"  value={inputTitle } name="todo" onChange={handleChange}/>
                     <Button color="primary" variant="outlined" value={editInLine} onClick ={() => editInLine(idx)} type="submit"> OK <DoneIcon/></Button>
                     {/* <Button type="submit"  variant="outlined" value={inputTitle} name="todo" onClick={this.handleSubmit}> Add Item </Button> */}
                 </form> 
