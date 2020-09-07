@@ -8,7 +8,7 @@ const List =({todos}) => {
         <div style={{display: 'flex',flexDirection:"column",textAlign:"center"}}>
             <ul>
             {todos.map((todo,t) => (
-                 <Typography variant="h5"  gutterBottom>
+                 <Typography variant="h5" gutterBottom>
                  <li className="item-style"><Todo key={t} todo={todo} idx={t} /></li>
                </Typography>
                 ))}

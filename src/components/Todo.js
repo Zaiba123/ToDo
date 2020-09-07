@@ -1,18 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { deleteTodo, editTodo } from '../action/addTodo.action';
+import { deleteTodo, editTodo,editInLine } from '../action/addTodo.action';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import DoneIcon from '@material-ui/icons/Done';
-import Icon from '@material-ui/core/Icon';
 
 
-const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description }) =>  {
+const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine }) =>  {
    return(
        <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
-            <div onClick ={() => editTodo(idx)}>
-                {currentItem === idx ? description : todo}
+{        //this function dispatch this action
+}            <div onClick ={() => editTodo(idx)}>
+                {currentItem === idx ? inputTitle : todo}
                </div>
             <div>
                 { currentItem === idx ? <Button color="primary" variant="outlined" onClick ={() => editTodo(idx)} type="submit"> OK <DoneIcon/></Button> :
@@ -28,11 +28,12 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, description }) =>  {
 };
 const mapDispatchToProps = dispatch => ({
     deleteTodo: key => dispatch(deleteTodo(key)),
-    editTodo: key => dispatch(editTodo(key))
+    editTodo: key => dispatch(editTodo(key)),
+    editInLine: obj => dispatch(editTodo(obj))
 });
 
 const mapStateToProps = state => ({
-    description: state.description,
+    inputTitle: state.inputTitle,
     currentItem: state.currentItem
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Todo)
