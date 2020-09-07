@@ -8,29 +8,34 @@ import DoneIcon from '@material-ui/icons/Done';
 
 
 const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine,value,todoText,addTodo,editInputBox }) =>  {
-     const onChange = (e) => editTodo(e.target.value);
-     const isEditMode = false;
-     const handleSubmission = e => {
+    //This commented out code is a stepping stone for an more enhanced experience with inline editing
+
+    /*
+    const onChange = (e) => editTodo(e.target.value);
+    const isEditMode = false; //this would be for a different version of toggling between buttons as seen in commented code below
+    */
+    const handleSubmission = e => { //This allows the "OK" button to take you out of edit mode 
         e.preventDefault();
-        if(currentItem || currentItem===0)
+        if(currentItem || currentItem ===0)
         {
             editInputBox({value:inputTitle,currentItem:currentItem,editInLine:todoText})
         }
         else
         {
-            addTodo(todoText);
+            addTodo(inputTitle);
         }
         };
    return(
        <div>
        <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
-           
             <div onClick ={() => editTodo(idx)}>
-                {currentItem === idx ? currentItem : todo}
-            </div> 
-            
+                {currentItem === idx ? inputTitle : todo}
+            </div>
             <div>
-            {/* { !isEditMode ?
+            {/* Implementation of additional part to feature for enhanced user interface  */}
+
+            {/*
+            { !isEditMode ?
                 <div>
                     {todo}
                     <button onClick ={() => editInLine(idx)}> Edit </button>
@@ -46,19 +51,15 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine
                     <button> ok </button>
                 </div>
             } */}
+                {/* This is the current logic for transitioning between the edit and non edit mode  */}
 
-                { (currentItem === idx )? 
-                ( <form>
-                    <input type="text"  value={todoText } name="todo" onChange={onChange}/>
-                    <Button color="primary" variant="outlined" onSubmit={handleSubmission} type="submit" onClick ={() => editInLine(idx)}> OK <DoneIcon/></Button> }
-                    <Button type="submit"  variant="outlined" value={inputTitle} name="todo" onClick={this.handleSubmit}> Add Item </Button>
-                </form> 
-                ) :
-                <>
-                <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} aria-label="delete" style={{ cursor:'pointer'}} type="submit" onClick={() => deleteTodo(idx)}>Delete</Button>
-                <Button variant="outlined" color="primary" type="submit" onClick ={() => editInLine(idx)}><EditIcon/> Edit</Button>
-
-                </>
+                { (currentItem === idx )?
+                   <Button color="primary" variant="outlined" type="submit" onClick ={() => editInLine(idx)} onClick={handleSubmission}> OK <DoneIcon/></Button>
+                    :
+                    <>
+                    <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} aria-label="delete" style={{ cursor:'pointer'}} type="submit" onClick={() => deleteTodo(idx)}>Delete</Button>
+                    <Button variant="outlined" color="primary" type="submit" onClick ={() => editTodo(idx)}><EditIcon/> Edit</Button>
+                    </>
                 }
             </div> 
 
