@@ -18,7 +18,7 @@ export const addTodo = (state = initialState,action) => {
         case "EDIT_INPUT_BOX":
                 return {...state,todos:state.todos.map((todo,t) => t !== action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,inputTitle:""}; //inputTitle is empty to clear out the text in box 
         case "EDIT_INLINE":
-            return {...state,todos:state.todos.map((todo,t) => t !== action.payload.todoText ? todo : action.payload.value),todoText:undefined,todoText:""};
+            return {...state,todos:state.todos.map((todo,t) => t !== action.payload.todoText ? todo : action.payload.value),todoText:"", inputTitle:""};
             // state.todoText.map((todoText, t) => {
             //     if (t !== action.t) {
             //       // This isn't the item we care about - keep it as-is
