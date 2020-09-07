@@ -7,7 +7,7 @@ import List from './components/List';
 export const App =()=>{
     return(
         <div>
-            <Typography variant="h2" component="h2" gutterBottom>
+            <Typography variant="h2" gutterBottom align="center">
               What are you going ToDo today?
             </Typography>
             {/* <h1>What are you going ToDo today?</h1> */}
