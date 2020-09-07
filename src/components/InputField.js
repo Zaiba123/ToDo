@@ -11,7 +11,7 @@ import "./style.css";
         e.preventDefault();
         if(this.props.currentItem || this.props.currentItem===0)
         {
-            this.props.editInputBox({value:this.props.inputTitle,currentItem:this.props.currentItem})
+            this.props.editInputBox({value:this.props.inputTitle,currentItem:this.props.currentItem,editInputBox:this.props.todoText})
         }
         else
         {

@@ -7,15 +7,22 @@ import EditIcon from '@material-ui/icons/Edit';
 import DoneIcon from '@material-ui/icons/Done';
 
 
-const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine }) =>  {
+const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine,props }) =>  {
+     const handleChange = (e) => props.inputTitle(e.target.value);
    return(
+       <div>
        <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
-{        //this function dispatch this action
-}            <div onClick ={() => editTodo(idx)}>
+           <div onClick ={() => editTodo(idx)}>
                 {currentItem === idx ? inputTitle : todo}
-               </div>
+            </div>
             <div>
-                { currentItem === idx ? <Button color="primary" variant="outlined" onClick ={() => editTodo(idx)} type="submit"> OK <DoneIcon/></Button> :
+                { (currentItem === idx )? 
+                ( <form>
+                    <input type="text" placeholder="Enter a task.." value={editInLine} name="todo" onChange={handleChange}/>
+                    <Button color="primary" variant="outlined" value={editInLine} onClick ={() => editInLine(idx)} type="submit"> OK <DoneIcon/></Button>
+                    {/* <Button type="submit"  variant="outlined" value={inputTitle} name="todo" onClick={this.handleSubmit}> Add Item </Button> */}
+                </form> 
+                ) :
                 <>
                 <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} aria-label="delete" style={{ cursor:'pointer'}} type="submit" onClick={() => deleteTodo(idx)}>Delete</Button>
                 <Button variant="outlined" color="primary" type="submit" onClick ={() => editTodo(idx)}><EditIcon/> Edit</Button>
@@ -24,12 +31,14 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine
                 }
             </div>
        </div>
+       </div>
+
    );
 };
 const mapDispatchToProps = dispatch => ({
     deleteTodo: key => dispatch(deleteTodo(key)),
     editTodo: key => dispatch(editTodo(key)),
-    editInLine: obj => dispatch(editTodo(obj))
+    editInLine: obj => dispatch(editInLine(obj))
 });
 
 const mapStateToProps = state => ({
