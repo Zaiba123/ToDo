@@ -8,12 +8,19 @@ import "./style.css";
  class InputField extends React.Component {
     handleChange = (e) => this.props.addInputTitle(e.target.value);
     handleSubmit = e => {
+    //     if (selected || selected === 0)
+    //   editAddTodo({
+    //     value: text,
+    //     selected: selected
+    //   });
+    // else addTodo(text);
+    
         e.preventDefault();
-        if(this.props.currentItem || this.props.currentItem===0)
+        if(this.props.currentItem)
         {
-            this.props.editInputBox({value:this.props.inputTitle,currentItem:this.props.currentItem,editInputBox:this.props.todoText})
+            this.props.editInputBox({value:this.props.inputTitle,currentItem:this.props.currentItem})
         }
-        else
+        else if ( this.props.inputTitle.length!==0)
         {
             this.props.addTodo(this.props.inputTitle);
         }

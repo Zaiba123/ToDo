@@ -7,7 +7,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DoneIcon from '@material-ui/icons/Done';
 
 
-const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine,value,todoText,addTodo,editInputBox }) =>  {
+const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine,todoText,addTodo,editInputBox }) =>  {
     //This commented out code is a stepping stone for an more enhanced experience with inline editing
 
     /*

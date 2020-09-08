@@ -1,7 +1,7 @@
 const initialState = {
     todos: [],
-    inputTitle:'',
-    todoText:"",
+    inputTitle:'', //This is the title for the todos, called it input title because this references the input button 
+    todoText:"", //I needed this new variable because I don't want there to be issue with updating the same state because of the basis of Redux
     currentItem: undefined, //this is for when someone wants to edit an item and clicks on it
 };
 
@@ -20,13 +20,12 @@ export const addTodo = (state = initialState,action) => {
         case "EDIT_INLINE":
             return {...state,todos:state.todos.map((todo,t) => t !== action.payload.todoText ? todo : action.payload.value),todoText:"", inputTitle:""};
 
-        //progress at inline editing:
+        //progress at inline editing, still a work in progress
         /*
             state.todoText.map((todoText, t) => {
                 if (t !== action.t) {
                   return todoText
                 }
-            
                 return {
                 ...state,
                   ...todoText,
@@ -37,6 +36,6 @@ export const addTodo = (state = initialState,action) => {
             inputTitle is empty to clear out the text in box
         */
     default:
-    return state; 
+    return state;
 };
 }
