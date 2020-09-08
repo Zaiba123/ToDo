@@ -67,3 +67,16 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # ToDo
+
+This application allows you to:
+- add a todo by typing in the input field and clicking the "add item" button
+- delete an item
+- edit an item through the input field box
+- change buttons to "OK" when in edit mode
+
+To run this application
+- Yarn install
+- Yarn start
+- Have an updated nvm version in case it doesn't run
+
+
