@@ -12,7 +12,6 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine
 
     /*
     const onChange = (e) => editTodo(e.target.value);
-    const isEditMode = false; //this would be for a different version of toggling between buttons as seen in commented code below
     */
     const handleSubmission = e => { //This allows the "OK" button to take you out of edit mode 
         e.preventDefault();
@@ -27,43 +26,27 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine
         };
    return(
        <div>
-       <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
-            <div onClick ={() => editTodo(idx)}>
-                {currentItem === idx ? inputTitle : todo}
+            <div style={{display: 'flex',flexDirection:"row",justifyContent:"space-between", border:"1px solid",cursor:"pointer"}}>
+                    <div onClick ={() => editTodo(idx)}>
+                        {currentItem === idx ? inputTitle : todo}
+                    </div>
+                    <div>
+                        {/* Implementation of additional part to feature for enhanced user interface  */}
+
+                        {/*
+                        {/* This is the logic for transitioning between the edit and non edit mode  */}
+                        
+                        { (currentItem === idx )?
+                        <Button color="primary" variant="outlined" type="submit" onClick={handleSubmission}> OK <DoneIcon/></Button>
+                            :
+                            <>
+                            <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} aria-label="delete" style={{ cursor:'pointer'}} type="submit" onClick={() => deleteTodo(idx)}>Delete</Button>
+                            <Button variant="outlined" color="primary" type="submit" onClick ={() => editTodo(idx)}><EditIcon/> Edit</Button>
+                            </>
+                        }
+                    </div> 
+
             </div>
-            <div>
-            {/* Implementation of additional part to feature for enhanced user interface  */}
-
-            {/*
-            { !isEditMode ?
-                <div>
-                    {todo}
-                    <button onClick ={() => editInLine(idx)}> Edit </button>
-                    <button onClick={() => deleteTodo(idx)}> Delete </button>
-                </div>
-
-                :
-                <div>
-                    <input 
-                        placeholder={todo}
-                        onChange={onChange}
-                    />
-                    <button> ok </button>
-                </div>
-            } */}
-                {/* This is the current logic for transitioning between the edit and non edit mode  */}
-
-                { (currentItem === idx )?
-                   <Button color="primary" variant="outlined" type="submit" onClick ={() => editInLine(idx)} onClick={handleSubmission}> OK <DoneIcon/></Button>
-                    :
-                    <>
-                    <Button variant="outlined" color="secondary" startIcon={<DeleteIcon />} aria-label="delete" style={{ cursor:'pointer'}} type="submit" onClick={() => deleteTodo(idx)}>Delete</Button>
-                    <Button variant="outlined" color="primary" type="submit" onClick ={() => editTodo(idx)}><EditIcon/> Edit</Button>
-                    </>
-                }
-            </div> 
-
-       </div>
        </div>
 
    );
