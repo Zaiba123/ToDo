@@ -1,25 +1,40 @@
 const initialState = {
     todos: [],
-    description:'',
-    testVariable:"",
+    inputTitle:'', //This is the title for the todos, called it input title because this references the input button 
+    todoText:"", //I needed this new variable because I don't want there to be issue with updating the same state because of the basis of Redux
     currentItem: undefined, //this is for when someone wants to edit an item and clicks on it
 };
 
 export const addTodo = (state = initialState,action) => {
     switch (action.type){
         case "ADD_TODO":
-            return { ...state, todos:state.todos.concat(action.payload),description:""};
+            return { ...state, todos:state.todos.concat(action.payload),inputTitle:""};
         case "DELETE_TODO":
             return {...state,todos:state.todos.filter((todo,t)=> t !== action.payload)};
         case "EDIT_TODO":
-            return {...state,testVariable:state.todos[action.payload],currentItem:action.payload}; //now you are at the index of what you want to edit
-        case "ADD_DESCRIPTION":
-            return {...state,description:action.payload};
-        case "EDIT_ITEM": //edit description
-                return {...state,todos:state.todos.map((todo,t) => t !== action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,description:""}; //description is empty to clear out the text in box 
+            return {...state,inputTitle:state.todos[action.payload],currentItem:action.payload}; //now you are at the index of what you want to edit
+        case "ADD_INPUT_TITLE":
+            return {...state,inputTitle:action.payload};
+        case "EDIT_INPUT_BOX":
+                return {...state,todos:state.todos.map((todo,t) => t !== action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,inputTitle:""}; //inputTitle is empty to clear out the text in box 
         case "EDIT_INLINE":
-            return {...state,todos:state.todos.map((todo,t) => t !== action.payload.currentItem ? todo : action.payload.value),currentItem:undefined,description:""}; //description is empty to clear out the text in box 
+            return {...state,todos:state.todos.map((todo,t) => t !== action.payload.todoText ? todo : action.payload.value),todoText:"", inputTitle:""};
 
+        //progress at inline editing, still a work in progress
+        /*
+            state.todoText.map((todoText, t) => {
+                if (t !== action.t) {
+                  return todoText
+                }
+                return {
+                ...state,
+                  ...todoText,
+                  ...action.todoText
+                }
+              })
+            return {...state,todoText:state.todos[action.payload],currentItem:action.payload}; //inputTitle is empty to clear out the text in box 
+            inputTitle is empty to clear out the text in box
+        */
     default:
     return state;
 };
