@@ -1,12 +1,9 @@
 import React from "react";
 import { atom,useRecoilState } from "recoil";
 
-export const todos = atom ({
-    key: 'items',
+export const todosState = atom ({
+    key: 'todosState',
     default: []
 })
 
-const darkModeState = atom ({
-    key:'darkMode',
-    default: true
-})
+// export default todosState

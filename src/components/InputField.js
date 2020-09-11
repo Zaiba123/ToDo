@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import {Todo} from './Todo.js';
+import {Todo} from './TodoItemTitleCreator.js';
 import AddIcon from '@material-ui/icons/Add';
 import "./style.css";
 

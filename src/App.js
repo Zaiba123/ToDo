@@ -8,6 +8,7 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 export const App =()=>{
     return(
         <div>
+            {/* <Header /> */}
             <Typography variant="h2" gutterBottom align="center">
               <u>What are you going <b>ToDo</b> today? <ListAltIcon fontSize="large"/></u>
             </Typography>
