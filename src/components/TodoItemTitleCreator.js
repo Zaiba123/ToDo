@@ -26,14 +26,20 @@ const TodoItemTitleCreator = () => {
         ]);
         setInputValue('');
     };
-    const onChange = ({ target: {value}}) => {
-        setInputValue(value);
-    };
+    // const onChange = ({ target: {value}}) => {
+    //     setInputValue(value);
+    // };
+    const onClick = e => {
+        e.preventDefault();
+        if(!inputValue) return;
+        addItems(inputValue);
+        // setInputValue('');
+      }
     return (
         <div>
             <form>
-                <input type="text" value="inputValue" onChange={onChange} />
-                <button onClick={addItems}>Add</button>
+                <input type="text" value={inputValue} placeholder="Add todo" onChange={e => setInputValue(e.target.value)} />
+                <button onClick={onClick}>Add</button>
             </form>
         </div>
     );

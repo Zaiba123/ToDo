@@ -3,8 +3,15 @@ import { Button } from '@material-ui/core';
 import {Todo} from './TodoItemTitleCreator.js';
 import AddIcon from '@material-ui/icons/Add';
 import "./style.css";
+import { useRecoilValue } from 'recoil';
+import { todosState } from '../recoil/atoms.js';
+import {atom } from  'recoil'
+import List from './List'
 
-const InputField = () => {
+
+const TodoItem = (item) => {
+    // const [List, setList] = useRecoilValue(todosState);
+    // const index = List.findIndex((listItem) => listItem === item);
     // const handleChange = (e) => addInputTitle(e.target.value);
     // const handleSubmit = e => {
     //     e.preventDefault();
@@ -44,4 +51,4 @@ const InputField = () => {
 //         )
 //     }
 // }
-export default InputField;
+export default TodoItem;
