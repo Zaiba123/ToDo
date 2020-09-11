@@ -5,16 +5,9 @@ import { connect } from "react-redux";
 import AddIcon from '@material-ui/icons/Add';
 import "./style.css";
 
- class InputField extends React.Component {
+ export default class InputField extends React.Component {
     handleChange = (e) => this.props.addInputTitle(e.target.value);
     handleSubmit = e => {
-    //     if (selected || selected === 0)
-    //   editAddTodo({
-    //     value: text,
-    //     selected: selected
-    //   });
-    // else addTodo(text);
-    
         e.preventDefault();
         if(this.props.currentItem)
         {
@@ -34,15 +27,15 @@ import "./style.css";
         )
     }
 }
-const mapDispatchToProps = (dispatch) => ({
-    addTodo : todo => dispatch(addTodo(todo)),
-    addInputTitle: value => dispatch(addInputTitle(value)),
-    editInputBox: obj => dispatch(editInputBox(obj))
-});
-const mapStateToProps = state => ({ //get value of text
-    inputTitle: state.inputTitle,
-    currentItem:state.currentItem
-});
-export default connect(
-    mapStateToProps, //mapStateToProps should come before Dispatch
-    mapDispatchToProps)(InputField);
+// const mapDispatchToProps = (dispatch) => ({
+//     addTodo : todo => dispatch(addTodo(todo)),
+//     addInputTitle: value => dispatch(addInputTitle(value)),
+//     editInputBox: obj => dispatch(editInputBox(obj))
+// });
+// const mapStateToProps = state => ({ //get value of text
+//     inputTitle: state.inputTitle,
+//     currentItem:state.currentItem
+// });
+// export default connect(
+//     mapStateToProps, //mapStateToProps should come before Dispatch
+//     mapDispatchToProps)(InputField);

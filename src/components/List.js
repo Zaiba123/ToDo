@@ -1,5 +1,5 @@
 import React from 'react';
-import Todo from './Todo';
+import {Todo} from './Todo';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 
@@ -16,7 +16,7 @@ const List =({todos}) => {
         </div>
     );
 };
-const mapStateToProps = state => ({
-    todos: state.todos
-}); //convert todos into props
+// const mapStateToProps = state => ({
+//     todos: state.todos
+// }); //convert todos into props
 export default connect(mapStateToProps)(List); //connect action and reducer js files
