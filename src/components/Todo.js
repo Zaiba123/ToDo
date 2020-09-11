@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { deleteTodo, editTodo,editInLine,addTodo,editInputBox } from '../action/addTodo.action';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import DoneIcon from '@material-ui/icons/Done';
 
 
-const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine,todoText,addTodo,editInputBox }) =>  {
+export default const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine,todoText,addTodo,editInputBox }) =>  {
     //This commented out code is a stepping stone for an more enhanced experience with inline editing
 
     /*
@@ -51,16 +50,4 @@ const Todo =({todo,idx, deleteTodo, editTodo, currentItem, inputTitle,editInLine
 
    );
 };
-const mapDispatchToProps = dispatch => ({
-    addTodo : todo => dispatch(addTodo(todo)),
-    deleteTodo: key => dispatch(deleteTodo(key)),
-    editInputBox: obj => dispatch(editInputBox(obj)),
-    editTodo: key => dispatch(editTodo(key)),
-    editInLine: obj => dispatch(editInLine(obj))
-});
 
-const mapStateToProps = state => ({
-    inputTitle: state.inputTitle,
-    currentItem: state.currentItem
-})
-export default connect(mapStateToProps,mapDispatchToProps)(Todo)
