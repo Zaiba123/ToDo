@@ -1,9 +1,9 @@
 import { selector } from 'recoil';
-import {todos} from './atoms';
 
-// export const todosState = selector ({
-//     key: "todosState",
-//     get: ({get}) => {
-//         const 
-//     }
-// })
+const removeItem = selector({
+    key: "removeItem",
+    get: ({ get }) => {
+      const items = get(itemsState);
+      return items.splice(index,1);
+    }
+  });

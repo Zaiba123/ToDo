@@ -12,7 +12,7 @@ export const App =()=>{
             <Typography variant="h2" gutterBottom align="center">
               <u>What are you going <b>ToDo</b> today? <ListAltIcon fontSize="large"/></u>
             </Typography>
-            <TodoItem />
+            {/* <TodoItem /> */}
             <TodoList  />
         </div>
     );
