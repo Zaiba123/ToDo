@@ -3,14 +3,17 @@ import {atom } from  'recoil';
 import TodoItemCreator from './TodoItemCreator';
 import Typography from '@material-ui/core/Typography';
 import {  selector, useRecoilValue, useRecoilState } from "recoil";
-import { itemsState }from '../recoil/atoms';
+import { itemsState, inputState }from '../recoil/atoms';
 // import {removeItem} from '../recoil/selectors';
 import TodoItem from './TodoItem';
+
+import { Input, Button } from '@material-ui/core';
+import './style.css'
 
 
 function TodoList() {
   const [items, setItems] = useRecoilState(itemsState);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useRecoilState(inputState);
   const handleSubmit = e => {
     e.preventDefault();
     setItems(
@@ -30,18 +33,21 @@ function TodoList() {
   //const todoList = useRecoilValue(list); //we are defining todoList to get the value of the atom we created
     return (
       <>
-        <div style={{display: 'flex',flexDirection:"column",cursor:"pointer"}}>
+        <div>
           Add Something you want to get Done:
           <ul>
-        {items.map((item, index) => (
-         <li> <div key={index}>{item.description}</div></li>
-        ))}
-        </ul>
-        <form onSubmit={handleSubmit}>
-          <input value={value} onChange={e => setValue(e.target.value)} />
-          <button disabled={!value}>Add</button>
+            {items.map((item, index) => console.log(index) || (
+              <TodoItem key={index} {
+                ...{
+                  item,
+                  index
+                }
+              } />
+            ))}
+          </ul>
+          <Input value={value} onChange={e => setValue(e.target.value)} />
+          <Button variant='outlined' disabled={!value} onClick={handleSubmit}>Add</Button>
           {/* <button onClick={() => deleteTodo()}>Delete</button> */}
-        </form>
         </div>
       </>
     );
