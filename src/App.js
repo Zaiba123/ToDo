@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from './components/TodoItem';
 import Typography from '@material-ui/core/Typography';
-import List from './components/List';
+import TodoList from './components/TodoList';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 
 
@@ -13,7 +13,7 @@ export const App =()=>{
               <u>What are you going <b>ToDo</b> today? <ListAltIcon fontSize="large"/></u>
             </Typography>
             <TodoItem />
-            <List  />
+            <TodoList  />
         </div>
     );
 }

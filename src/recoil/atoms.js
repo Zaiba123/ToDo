@@ -1,9 +1,7 @@
-import React from "react";
-import { atom,useRecoilState } from "recoil";
+import { atom } from "recoil";
 
-export const todosState = atom ({
-    key: 'todosState',
-    default: []
-})
+ export const todoListState = atom({
+    key: 'todoListState',
+    default: [],
+  });
 
-// export default todosState
