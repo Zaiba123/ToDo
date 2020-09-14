@@ -1,54 +1,42 @@
-// import React from 'react';
-// // import { Button } from '@material-ui/core';
-// import {TodoItemCreator} from './TodoItemCreator.js';
-// // import AddIcon from '@material-ui/icons/Add';
-// import "./style.css";
-// import { useRecoilState } from 'recoil';
-// import { todoListState} from '../recoil/atoms'
+import React, { useState, useCallback } from 'react'
+import { useRecoilState, useRecoilCallback } from 'recoil';
+import { itemsState } from '../recoil/atoms';
+import { Button, Input } from '@material-ui/core';
 
-// export default function TodoItem(item) {
-//     const [todoList, setTodoList] = useRecoilState(todoListState);
-//     const index = todoList.findIndex((listItem) => listItem === item);
+export default ({item, index}) => {
+    const [ edit, setEdit ]= useState(false);
+    const [ items, setItems ] = useRecoilState(itemsState);
 
-//     const editItemText = ({target: {value}}) => {
-//         const newList = replaceItemAtIndex(todoList,index,{
-//             ...item,
-//             text:value,
-//         });
-//         setTodoList(newList);
-//     };
+    const handleDelete = useRecoilCallback(({ snapshot }) => async () => {
 
-//     const toggleItemCompletion = () => {
-//         const newList = replaceItemAtIndex(todoList, index, {
-//             ...item,
-//             isComplete:!item.isComplete,
-//         });
-//         setTodoList(newList);
-//     }
+        const currentItems = [...await snapshot.getPromise(itemsState)];
 
-//     const deleteItem = () => {
-//         const newList = removeItemAtIndex(todoList, index);
-    
-//         setTodoList(newList);
-//       };
+        currentItems.splice(index, 1);
+        
+        setItems(currentItems);
 
-//     return (
-//         <div>
-//            <input type="text" value={item.text} onChange={editItemText}  />
-//            <input 
-//            type="checkbox"
-//            checked={item.isComplete}
-//            onChange={toggleItemCompletion}
-//            />
-//            <button onClick={deleteItem}>X</button>
-//         </div>
-//     )
-// }
+    }, [setItems])
 
-// function replaceItemAtIndex(arr, index, newValue) {
-//   return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
-// }
+    const handleRename = useRecoilCallback(({ snapshot }) => async (description) => {
 
-// function removeItemAtIndex(arr, index) {
-//   return [...arr.slice(0, index), ...arr.slice(index + 1)];
-// }
+        const currentItems = [...await snapshot.getPromise(itemsState)];
+        
+        currentItems.splice(index, 1, {
+            ...currentItems[index],
+            description
+        })
+        
+        setItems(currentItems);
+
+    }, [setItems])
+
+    return <li>
+        {
+            !edit ? item.description : <Input value={item.description} onChange={(event) => handleRename(event.target.value)} />
+        }
+        <Button onClick={() => setEdit(!edit)}>
+        {edit ? 'OK' : 'Rename'}
+        </Button>
+        {edit ? null : <Button onClick={() => handleDelete()}>Delete</Button>}
+    </li>
+}
